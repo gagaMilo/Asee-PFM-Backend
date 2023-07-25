@@ -1,0 +1,59 @@
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\appsettings.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\libman.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Personal Finance Management API.exe
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Personal Finance Management API.deps.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Personal Finance Management API.runtimeconfig.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Personal Finance Management API.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Personal Finance Management API.pdb
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\CsvHelper.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Humanizer.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Npgsql.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.csproj.AssemblyReference.cache
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.AssemblyInfoInputs.cache
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.AssemblyInfo.cs
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.csproj.CoreCompileInputs.cache
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\staticwebassets\msbuild.Personal Finance Management API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\staticwebassets\msbuild.build.Personal Finance Management API.props
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Personal Finance Management API.props
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Personal Finance Management API.props
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\scopedcss\bundle\Personal Finance Management API.styles.css
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.csproj.CopyComplete
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\refint\Personal Finance Management API.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.pdb
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\Personal Finance Management API.genruntimeconfig.cache
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\obj\Debug\net6.0\ref\Personal Finance Management API.dll

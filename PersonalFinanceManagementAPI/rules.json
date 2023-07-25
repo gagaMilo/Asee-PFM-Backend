@@ -1,0 +1,34 @@
+{
+  "Rules": [
+    {
+      "Title": "When BeneficiaryName contains \"Glovo\" or \"Wolt\" categorize transaction as 4 (Food & Dining / Restaurants)",
+      "Catcode": "39",
+      "Predicate": "BeneficiaryName LIKE '%Glovo%' OR BeneficiaryName LIKE '%Wolt%'"
+    },
+    {
+      "Title": "When BeneficiaryName contains \"Orange\" or \"A1 Telecom\" categorize transaction as 10 (Bills & Utilities / Internet)",
+      "Catcode": "10",
+      "Predicate": "BeneficiaryName LIKE '%Orange%' OR BeneficiaryName LIKE '%A1 Telecom%'"
+    },
+    {
+      "Title": "When Mcc is 8299 (Caterers) categorize transaction as 17 (Education / Tuition)",
+      "Catcode": "17",
+      "Predicate": "Mcc = '8299'"
+    },
+    {
+      "Title": "When Mcc is 5499 (Caterers) categorize transaction as 38 (Food & Dining / Groceries)",
+      "Catcode": "38",
+      "Predicate": "Mcc = '5499'"
+    },
+    {
+      "Title": "When Mcc is 7523 (Caterers) categorize transaction as 5 (Auto & Transport / Parking)",
+      "Catcode": "5",
+      "Predicate": "Mcc = '7523'"
+    },
+    {
+      "Title": "When Mcc is 5733 (Caterers) categorize transaction as 22 (Entertainment / Music)",
+      "Catcode": "22",
+      "Predicate": "Mcc = '5733'"
+    }
+  ]
+}

@@ -21,7 +21,7 @@ namespace PersonalFinanceManagementAPI.Services
         public async Task<Categories> ImportCsvCategories(CsvLineCategoriesCommand csvLine)
         {
 
-            var checkIfProductExists = await CheckIfProductExistsAsync(csvLine.Name);
+            var checkIfProductExists = await CheckIfCategoryExistsAsync(csvLine.Name);
             if (!checkIfProductExists)
             {
                 var newCategoriesEntity = _mapper.Map<CategoriesEntity>(csvLine);
@@ -32,7 +32,7 @@ namespace PersonalFinanceManagementAPI.Services
 
         }
 
-        private async Task<bool> CheckIfProductExistsAsync(string code)
+        private async Task<bool> CheckIfCategoryExistsAsync(string code)
         {
 
             var transaction = await _repository.GetCategoryByCode(code);

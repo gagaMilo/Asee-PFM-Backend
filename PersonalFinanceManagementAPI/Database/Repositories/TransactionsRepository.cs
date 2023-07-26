@@ -13,6 +13,7 @@ using System.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using SortOrder = PersonalFinanceManagementAPI.Models.SortOrder;
 using LinqKit;
+using System.Diagnostics.Metrics;
 
 namespace PersonalFinanceManagementAPI.Database.Repositories
 {
@@ -43,38 +44,56 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
 
             
             //sortiranje
+
             if (!String.IsNullOrEmpty(sortBy) )
             {
                 switch (sortBy)
                 {
                     case "id":
+                        {
                             query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Id) : query.OrderByDescending(x => x.Id);
                             break;
+                        }
                     case "beneficiary-name":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.BeneficiaryName) : query.OrderByDescending(x => x.BeneficiaryName);
-                        break;
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.BeneficiaryName) : query.OrderByDescending(x => x.BeneficiaryName);
+                            break;
+                        }
                     case "date":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Date) : query.OrderByDescending(x => x.Date);
-                        break;
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Date) : query.OrderByDescending(x => x.Date);
+                            break;
+                        }
                     case "direction":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Direction) : query.OrderByDescending(x => x.Direction);
-                        break;
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Direction) : query.OrderByDescending(x => x.Direction);
+                            break;
+                        }
                     case "amount":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Amount) : query.OrderByDescending(x => x.Amount);
-                        break;
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Amount) : query.OrderByDescending(x => x.Amount);
+                            break;
+                        }
                     case "description":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Description) : query.OrderByDescending(x => x.Description);
-                        break;
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Description) : query.OrderByDescending(x => x.Description);
+                            break;
+                        }
                     case "currency":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Currency) : query.OrderByDescending(x => x.Currency);
-                        break;
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Currency) : query.OrderByDescending(x => x.Currency);
+                            break;
+                        }
                     case "mcc":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Mcc) : query.OrderByDescending(x => x.Mcc);
-                        break;
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Mcc) : query.OrderByDescending(x => x.Mcc);
+                            break;
+                        }
                     case "kind":
-                        query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Kind) : query.OrderByDescending(x => x.Kind);
-                        break;
-
+                        {
+                            query = sortOrder == SortOrder.Asc ? query.OrderBy(x => x.Kind) : query.OrderByDescending(x => x.Kind);
+                            break;
+                        }
 
                 }
 
@@ -150,10 +169,7 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
                 
                 query = query.Where(x => x.Catcode == catcode);
             }
-            else
-            {
-                query = query.Where(x => string.IsNullOrEmpty(x.Catcode));
-            }
+            
 
             if (startDate.HasValue)
             {
@@ -200,116 +216,100 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
 
             var result = new SpendingsByCategoryPagedSortedList<SpendingInCategoryEntity>
             {
-               
+
             };
+
             if (catcode != null)
             {
-                
-                var All = new List<string>();
 
-                All.Add(catcode);
-
-                
-                
-
-                var query1 = _dbContext.Categories.AsQueryable();
-                var categories = await query1.ToListAsync();
-
-
-                var universal = catcode;
-                var fleg = 0;
-                
-                //sve podkategorije - ako postoje
-                universal = catcode;
-                fleg = 0;
-
-                while (true)
+                if (catcode.All(c => char.IsDigit(c)))
                 {
-                    if (fleg == 1)
+                    var newListCatcode_sub = new List<SpendingInCategoryEntity>();
+                    query = _dbContext.Transactions.AsQueryable();
+                    var spendings_sub = await query.ToListAsync();
+                    int count_sub = 0;
+                    double amount_sub = 0;
+
+                    foreach (var row in spendings_sub)
                     {
-                        break;
-                    }
-                    var fleg1 = 0;
-                    foreach (var category in categories)
-                    {
-                        if (category.ParentCode == universal)
+                        if (row.Catcode != null && row.Catcode.Equals(catcode))
                         {
-
-                            var Code = category.Code;
-                            fleg1 = 1;
-                            if (Code != null && !Code.Equals(""))
-                            {
-                                All.Add(Code);
-                                universal = Code;
-                                
-                                break;
-                            }
-                            else
-                            {
-                                fleg = 1;
-                                break;
-                            }
+                            amount_sub += row.Amount;
+                            count_sub++;
                         }
-                        
-
-
                     }
-
-                   if(fleg1 == 0)
-                    {
-                        break; // nema podkategoriju
-                    }
+                    SpendingInCategoryEntity spendinInCategory_sub = new SpendingInCategoryEntity(catcode, amount_sub, count_sub);
+                    newListCatcode_sub.Add(spendinInCategory_sub);
+                    result.Groups = newListCatcode_sub;
 
                 }
 
-                //sad imam listu stringova od svih kategorija i podkategorija 
-                // Kreiram praznu listu za rezultate
-                var newListCatcode = new List<SpendingInCategoryEntity>();
-                query = _dbContext.Transactions.AsQueryable();
-                var spendings1 = await query.ToListAsync();
-
-                foreach (var catcodeValue in All)
+                if (catcode.All(c => char.IsLetter(c)))
                 {
+                    SpendingInCategoryEntity spendinInCategory_sub;
+                    var newListCatcode_category_and_sub = new List<SpendingInCategoryEntity>();
+                    // da li postoji catcode kategorisan kao kategorija ili kao podkategorija
+                    query = _dbContext.Transactions.AsQueryable();
+                    var spendings = await query.ToListAsync();
+                    int count_category = 0;
+                    double amount_category = 0;
 
-                    if (catcodeValue != null )
+                    //provera da li postoji kategorisan kao kategorija prvo
+                    foreach (var row in spendings)
                     {
-                        int count_i = 0;
-                        double amount_i = 0;
-                        int flag = 0;
-
-                        // Provera da li smo vec obradili ovu kategoriju
-                        var existingCategory = newListCatcode.FirstOrDefault(c => c.Catcode == catcodeValue);
-
-                        if (existingCategory == null)
+                        if(row.Catcode != null && row.Catcode.Equals(catcode))
                         {
+                            amount_category += row.Amount;
+                            count_category++;
+                        }
+                    }
+                    if (amount_category != 0)
+                    {
+                       spendinInCategory_sub = new SpendingInCategoryEntity(catcode, amount_category, count_category);
+                        newListCatcode_category_and_sub.Add(spendinInCategory_sub);
+                    }
+                    //dobijem sve moguce podkategorije za tu kategoriju
+                    var query1 = _dbContext.Categories.AsQueryable();
+                    var categories = await query1.ToListAsync();
+                    List<string> allsubcategory_list = new List<string>();
+                    foreach (var row in categories)
+                    {
+                        if (row.ParentCode != null && row.ParentCode.Equals(catcode))
+                        {
+                            allsubcategory_list.Add(row.Code);
+                        }
+                    }
 
-                            foreach (var transaction_j in spendings1)
+                   foreach(var row in allsubcategory_list)
+                    {
+                        query = _dbContext.Transactions.AsQueryable();
+                        var spendings_sub = await query.ToListAsync();
+                        int count_sub = 0;
+                        double amount_sub = 0;
+
+                        foreach (var row1 in spendings_sub)
+                        {
+                            if (row1.Catcode != null && row1.Catcode.Equals(row))
                             {
-                                if (catcodeValue.Equals(transaction_j.Catcode))
-                                {
-
-                                    flag = 1;
-                                    amount_i += transaction_j.Amount;
-                                    count_i++;
-
-                                }
-                            }
-
-                            if (flag == 1)
-                            {
-                                SpendingInCategoryEntity spendinInCategory_i = new SpendingInCategoryEntity(catcodeValue, amount_i, count_i);
-                                newListCatcode.Add(spendinInCategory_i);
+                                amount_sub += row1.Amount;
+                                count_sub++;
                             }
                         }
-
+                        if (amount_sub != 0)
+                        {
+                            spendinInCategory_sub = new SpendingInCategoryEntity(catcode, amount_sub, count_sub);
+                            newListCatcode_category_and_sub.Add(spendinInCategory_sub);
+                        }
 
                     }
+
+                    result.Groups = newListCatcode_category_and_sub;
+
+                   
+
                 }
-                result.Groups = newListCatcode;
 
-
-
-            }
+                }
 
             if (string.IsNullOrEmpty(catcode))
             {
@@ -320,15 +320,13 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
 
                 foreach (var transaction in spendings)
                 {
-                    if (transaction != null)
+                    if (transaction != null && transaction.Catcode != null)
                     {
                         string catcode_i = transaction.Catcode;
                         string subCategory_i = new String(catcode_i);
 
-                        if (catcode_i != null)
-                        {
-                            int count_i = 0;
-                            double amount_i = 0;
+                        int count_i = 0;
+                         double amount_i = 0;
 
                             // ako je podkategorija
                             if (subCategory_i.All(c => char.IsDigit(c)))
@@ -339,7 +337,7 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
 
 
                             }
-                            // optimizovati 
+                            // optimizovati - ako bude vremena
                             // ako je kategorija
                                 if (catcode_i != null && catcode_i.All(c => char.IsLetter(c)))
                                 { 
@@ -397,7 +395,7 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
                                    
                                 }
                             }
-                        }
+                        
                     }
                 }
                 result.Groups = newList;
@@ -406,6 +404,8 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
 
             return result;
         }
+
+   
 
         private  string? CheckCategoryForSubcategory(string catcode_i, List<CategoriesEntity> categories)
         {
@@ -450,20 +450,7 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
             return splits;
         }
 
-        public Mcc ConvertToMccEnum(string mccValue)
-        {
-         
-            switch (mccValue)
-            {
-                case "Mcc = '8299'": return Mcc.MCC237;
-                case "Mcc = '5499'": return Mcc.MCC55;
-                case "Mcc = '7523'": return Mcc.MCC187;
-                case "Mcc = '5733'": return Mcc.MCC87;
-
-                // ...
-                default: return Mcc.MCC1; 
-            }
-        }
+ 
 
         public async Task<bool> AutoCategorizeTransactions()
         {
@@ -477,54 +464,13 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
 
             foreach (var rule in config.Rules)
             {
-                string predicate = rule.Predicate;
-                List<TransactionsEntity> transactions_category = new List<TransactionsEntity>();
-
-
+                string predicate = $"WHERE {rule.Predicate}";
+                List<TransactionsEntity> transactions_category;
+             
+               // Console.WriteLine($"SQL upit: SELECT * FROM transactions {predicate}");
+                transactions_category =  await _dbContext.Transactions.FromSqlRaw($"SELECT * FROM transactions {predicate}").ToListAsync();
                 
-                   // Pravim SQL upit za filtriranje 
-                   transactions_category = await _dbContext.Transactions
-                             .FromSql($"SELECT * FROM public.transactions WHERE {predicate}")
-                             .ToListAsync();
-                   
-                /*
-                
-                if (rule.Predicate.Contains("Mcc"))
-                {
-                   
-                   
-
-                    var mccValue = rule.Predicate.Replace("'Mcc'", "Mcc"); // Uklonim apostrofe oko Mcc
-                    var mccEnumValue = ConvertToMccEnum(mccValue);
-                    transactions_category = await _dbContext.Transactions
-                        .Where(t => t.Mcc == mccEnumValue)
-                        .ToListAsync();
-
-
-                }
-
-                
-               if (rule.Predicate.Contains("BeneficiaryName"))
-                {
-                    /*
-                    var beneficiaryNameValue = rule.Predicate.Replace("'BeneficiaryName'", "BeneficiaryName"); // Uklonim apostrofe oko BeneficiaryName
-                    
-                    transactions_category = await _dbContext.Transactions
-                        .Where(t => EF.Functions.Like(t.BeneficiaryName, beneficiaryNameValue))
-                        .ToListAsync();*/
-                    /*
-                    transactions_category = await _dbContext.Transactions
-                              .FromSqlInterpolated($"SELECT * FROM public.transactions WHERE {rule.Predicate}")
-                              .ToListAsync();
-                    
-                    var beneficiaryNameValue = rule.Predicate.Replace("'BeneficiaryName'", "BeneficiaryName");
-                    List<string> names = convertToNames(beneficiaryNameValue);
-                    transactions_category = await _dbContext.Transactions
-                        .Where(t => t.BeneficiaryName == names[0] || t.BeneficiaryName == names[1])
-                        .ToListAsync();
-
-                }
-            */
+           
                 if (transactions_category != null)
                 {
                     foreach (var transaction in transactions_category)
@@ -541,23 +487,10 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
             return true;
         }
 
-        private List<string> convertToNames(string beneficiaryNameValue)
-        {
-            List<string> searchTerms = new List<string>();
+    
 
-            string[] parts = beneficiaryNameValue.Split(new string[] { " OR " }, StringSplitOptions.RemoveEmptyEntries);
+      
 
-            foreach (string part in parts)
-            {
-                string searchTerm = part.Replace("BeneficiaryName LIKE '%", "").Replace("%'", "");
-                searchTerms.Add(searchTerm);
-            }
-
-            return searchTerms;
-        }
     }
-   
 
-}
-
-
+    }

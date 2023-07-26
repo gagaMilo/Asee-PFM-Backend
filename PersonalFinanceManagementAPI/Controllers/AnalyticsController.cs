@@ -15,9 +15,7 @@ namespace PersonalFinanceManagementAPI.Controllers
         private readonly ILogger<AnalyticsController> _logger;
         private readonly ITransactionsService _transactionsService;
 
-        
-
-
+       
         public AnalyticsController(ILogger<AnalyticsController> logger, ITransactionsService transactionsService)
         {
             _logger = logger;

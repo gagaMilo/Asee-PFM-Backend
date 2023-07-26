@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Runtime.Intrinsics.Arm;
 
 namespace PersonalFinanceManagementAPI.Controllers
 {
@@ -36,10 +37,40 @@ namespace PersonalFinanceManagementAPI.Controllers
     }
         // GET : /transactions   
         [HttpGet]
-        public async Task<IActionResult> GetListTransactions([FromQuery(Name = "transaction-kind")] TransactionKind? transactionKind = null, [FromQuery(Name = "start-date")] DateTime? startDate = null, [FromQuery(Name = "end-date")] DateTime? endDate = null, [FromQuery(Name = "page")] int page = 1, [FromQuery(Name = "page-size")] int pageSize = 10, [FromQuery(Name = "sort-by")] string? sortBy = null, [FromQuery(Name ="sort-order")] SortOrder sortOrder = SortOrder.Asc)
+        public async Task<IActionResult> GetListTransactions([FromQuery(Name = "transaction-kind")] string? transactionKind = null, [FromQuery(Name = "start-date")] DateTime? startDate = null, [FromQuery(Name = "end-date")] DateTime? endDate = null, [FromQuery(Name = "page")] int page = 1, [FromQuery(Name = "page-size")] int pageSize = 10, [FromQuery(Name = "sort-by")] string? sortBy = null, [FromQuery(Name ="sort-order")] SortOrder sortOrder = SortOrder.Asc)
         {
-            var transactions = await _transactionsService.GetListTransactions(transactionKind, startDate, endDate, page, pageSize, sortBy, sortOrder);
+            TransactionKind? transactionKind1 = traconvertStringTransactionKindToEnum(transactionKind);
+            var transactions = await _transactionsService.GetListTransactions(transactionKind1, startDate, endDate, page, pageSize, sortBy, sortOrder);
            return Ok(transactions);
+        }
+
+        private TransactionKind? traconvertStringTransactionKindToEnum(string? transactionKind)
+        {
+            if (transactionKind != null) {
+                switch (transactionKind)
+                {
+                    case "dep": return TransactionKind.dep;
+                    case "wdw": return TransactionKind.wdw;
+                    case "pmt": return TransactionKind.pmt;
+                    case "fee": return TransactionKind.fee;
+                    case "inc": return TransactionKind.inc;
+                    case "rev": return TransactionKind.rev;
+                    case "adj": return TransactionKind.adj;
+                    case "lnd": return TransactionKind.lnd;
+                    case "lnr": return TransactionKind.lnd;
+                    case "fcx": return TransactionKind.lnd;
+                    case "aop": return TransactionKind.lnd;
+                    case "acl": return TransactionKind.lnd;
+                    case "spl": return TransactionKind.lnd;
+                    case "sal": return TransactionKind.lnd;
+                    default: return null;
+
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // POST : /transactions/import 
@@ -111,7 +142,7 @@ namespace PersonalFinanceManagementAPI.Controllers
         }
 
         // POST : /transaction/{id}/categorize
-        [HttpPost("{id}categorize")]
+        [HttpPost("{id}/categorize")]
         [Description("Categorize a transacation by id")]
 
         public async Task<IActionResult> CategorizeTransaction(string id, [FromBody] CategorizeTransCommand catCode)
@@ -136,6 +167,7 @@ namespace PersonalFinanceManagementAPI.Controllers
 
         public async Task<IActionResult> AutoCategorizeTransaction()
         {
+            
             var result = await _transactionsService.AutoCategorizeTransactions();
 
             if (result)
@@ -144,7 +176,7 @@ namespace PersonalFinanceManagementAPI.Controllers
             }
             else
             {
-                return BadRequest("Not successfully auto-categorized!");
+               return BadRequest("Not successfully auto-categorized!");
             }
 
         }

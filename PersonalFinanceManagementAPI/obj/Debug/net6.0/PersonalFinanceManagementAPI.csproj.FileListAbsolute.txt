@@ -80,3 +80,5 @@ C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManageme
 C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\Testiranje.postman_collection.json
+C:\Users\fortu\source\repos\PersonalFinanceManagementAPI\PersonalFinanceManagementAPI\bin\Debug\net6.0\LinqKit.Microsoft.EntityFrameworkCore.dll

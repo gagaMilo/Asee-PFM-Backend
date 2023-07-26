@@ -1,0 +1,507 @@
+{
+	"info": {
+		"_postman_id": "0cd8bce2-27c8-48fd-b596-9c5106bd9169",
+		"name": "Testiranje",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28700734"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5161/transactions/70919477/split_nevalidan_test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"splits\": [\r\n    {\r\n      \"catcode\": \"B\",\r\n      \"amount\": 26.80\r\n    },\r\n {\r\n      \"catcode\": \"A\",\r\n      \"amount\": 50\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5161/transactions/70919477/split",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"transactions",
+						"70919477",
+						"split"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5161/spending-analytics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"// Define the expected schema for the response\r",
+							"const expectedSchema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"groups\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": {\r",
+							"        \"type\": \"object\",\r",
+							"        \"properties\": {\r",
+							"          \"catcode\": {\r",
+							"            \"type\": \"string\"\r",
+							"          },\r",
+							"          \"amount\": {\r",
+							"            \"type\": \"number\"\r",
+							"          },\r",
+							"          \"count\": {\r",
+							"            \"type\": \"integer\"\r",
+							"          }\r",
+							"        },\r",
+							"        \"required\": [\"catcode\", \"amount\", \"count\"]\r",
+							"      }\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\"groups\"]\r",
+							"}\r",
+							"\r",
+							"// Send the API request and store the response in the 'response' variable\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"// Validate the response payload against the expected schema\r",
+							"pm.test('Response matches expected schema', function () {\r",
+							"    pm.expect(tv4.validate(response, expectedSchema)).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5161/spending-analytics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"spending-analytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5161/categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"// Define the expected schema for the response\r",
+							"const expectedSchema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"items\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": {\r",
+							"        \"type\": \"object\",\r",
+							"        \"properties\": {\r",
+							"          \"code\": {\r",
+							"            \"type\": \"string\"\r",
+							"          },\r",
+							"          \"parent-code\": {\r",
+							"            \"type\": \"string\"\r",
+							"          },\r",
+							"          \"name\": {\r",
+							"            \"type\": \"string\"\r",
+							"          }\r",
+							"        },\r",
+							"        \"required\": [\"code\", \"parent-code\", \"name\"]\r",
+							"      }\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\"items\"]\r",
+							"}\r",
+							"// Send the API request and store the response in the 'response' variable\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"// Validate the response payload against the expected schema\r",
+							"pm.test('Response matches expected schema', function () {\r",
+							"    pm.expect(tv4.validate(response, expectedSchema)).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5161/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5161/categories/import",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/fortu/Downloads/categories.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5161/categories/import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"categories",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5161/transactions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"total-count\": { \"type\": \"integer\" },\r",
+							"    \"page-size\": { \"type\": \"integer\" },\r",
+							"    \"page\": { \"type\": \"integer\" },\r",
+							"    \"total-pages\": { \"type\": \"integer\" },\r",
+							"    \"sort-order\": { \"type\": \"string\" },\r",
+							"    \"items\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": {\r",
+							"        \"type\": \"object\",\r",
+							"        \"properties\": {\r",
+							"          \"id\": { \"type\": \"string\" },\r",
+							"          \"beneficiary-name\": { \"type\": \"string\" },\r",
+							"          \"date\": { \"type\": \"string\", \"format\": \"date-time\" },\r",
+							"          \"direction\": { \"type\": \"string\" },\r",
+							"          \"amount\": { \"type\": \"number\" },\r",
+							"          \"description\": { \"type\": \"string\" },\r",
+							"          \"currency\": { \"type\": \"string\" },\r",
+							"          \"mcc\": { \"type\": \"string\", \"nullable\": true },\r",
+							"          \"kind\": { \"type\": \"string\" },\r",
+							"          \"catcode\": { \"type\": \"string\", \"nullable\": true },\r",
+							"          \"splits\": { \"type\": \"array\", \"items\": {} }\r",
+							"        },\r",
+							"        \"required\": [\r",
+							"          \"id\",\r",
+							"          \"date\",\r",
+							"          \"direction\",\r",
+							"          \"amount\",\r",
+							"          \"currency\",\r",
+							"          \"kind\"\r",
+							"        ]\r",
+							"      }\r",
+							"    }\r",
+							"  }\r",
+							"  \r",
+							"};\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test('Response matches expected schema', function() {\r",
+							"  pm.expect(jsonData).to.have.jsonSchema(schema);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5161/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5161/transactions/import",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/fortu/Downloads/transactions.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5161/transactions/import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"transactions",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5161/transactions/78624056/split",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": { \"type\": \"string\" },\r",
+							"    \"beneficiary-name\": { \"type\": \"string\" },\r",
+							"    \"date\": { \"type\": \"string\", \"format\": \"date-time\" },\r",
+							"    \"direction\": { \"type\": \"string\" },\r",
+							"    \"amount\": { \"type\": \"number\" },\r",
+							"    \"description\": { \"type\": \"string\" },\r",
+							"    \"currency\": { \"type\": \"string\" },\r",
+							"    \"mcc\": { \"type\": \"string\" },\r",
+							"    \"kind\": { \"type\": \"string\" },\r",
+							"    \"catcode\": { \"type\": \"string\" },\r",
+							"    \"splits\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": {\r",
+							"        \"type\": \"object\",\r",
+							"        \"properties\": {\r",
+							"          \"catcode\": { \"type\": \"string\" },\r",
+							"          \"amount\": { \"type\": \"number\" }\r",
+							"        },\r",
+							"        \"required\": [\"catcode\", \"amount\"]\r",
+							"      }\r",
+							"    }\r",
+							"  }\r",
+							"}\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test('Response matches expected schema', function() {\r",
+							"  pm.expect(jsonData).to.have.jsonSchema(schema);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"splits\": [\r\n    {\r\n      \"catcode\": \"B\",\r\n      \"amount\": 36.80\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5161/transactions/78624056/split",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"transactions",
+						"78624056",
+						"split"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5161/transactions/70919477categorize",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": { \"type\": \"string\" },\r",
+							"    \"beneficiary-name\": { \"type\": \"string\" },\r",
+							"    \"date\": { \"type\": \"string\", \"format\": \"date-time\" },\r",
+							"    \"direction\": { \"type\": \"string\" },\r",
+							"    \"amount\": { \"type\": \"number\" },\r",
+							"    \"description\": { \"type\": \"string\" },\r",
+							"    \"currency\": { \"type\": \"string\" },\r",
+							"    \"mcc\": { \"type\": \"string\" },\r",
+							"    \"kind\": { \"type\": \"string\" },\r",
+							"    \"catcode\": { \"type\": \"string\" },\r",
+							"    \"splits\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": {\r",
+							"        \"type\": \"object\",\r",
+							"        \"properties\": {\r",
+							"          \"catcode\": { \"type\": \"string\" },\r",
+							"          \"amount\": { \"type\": \"number\" }\r",
+							"        },\r",
+							"        \"required\": [\"catcode\", \"amount\"]\r",
+							"      }\r",
+							"    }\r",
+							"  }\r",
+							"}\r",
+							"  \r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test('Response matches expected schema', function() {\r",
+							"  pm.expect(jsonData).to.have.jsonSchema(schema);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"catCode\": \"A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5161/transactions/70919477categorize",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5161",
+					"path": [
+						"transactions",
+						"70919477categorize"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

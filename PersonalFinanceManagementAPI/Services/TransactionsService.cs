@@ -157,12 +157,10 @@ namespace PersonalFinanceManagementAPI.Services
 
         public async Task<bool> AutoCategorizeTransactions()
         {
-            var rulesJson = File.ReadAllText("rules.json");
+            
 
-            var config = JsonConvert.DeserializeObject<Configuration>(rulesJson);
-
-            //List<Models.Rule> rules = config.Rules;
-            return await _repository.AutoCategorizeTransactions();
+  
+             return await _repository.AutoCategorizeTransactions();
 
           
           

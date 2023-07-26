@@ -1,34 +1,129 @@
 {
   "Rules": [
+
     {
-      "Title": "When BeneficiaryName contains \"Glovo\" or \"Wolt\" categorize transaction as 4 (Food & Dining / Restaurants)",
+      "Title": "When BeneficiaryName contains \"Glovo\" or \"Wolt\" categorize transaction as 39 (Food & Dining / Restaurants)",
       "Catcode": "39",
-      "Predicate": "BeneficiaryName LIKE '%Glovo%' OR BeneficiaryName LIKE '%Wolt%'"
+      "Predicate": "\"BeneficiaryName\" LIKE '%Glovo%' OR \"BeneficiaryName\" LIKE '%Wolt%'"
     },
     {
-      "Title": "When BeneficiaryName contains \"Orange\" or \"A1 Telecom\" categorize transaction as 10 (Bills & Utilities / Internet)",
-      "Catcode": "10",
-      "Predicate": "BeneficiaryName LIKE '%Orange%' OR BeneficiaryName LIKE '%A1 Telecom%'"
+      "Title": "When BeneficiaryName contains \"Delhaize\" or \"Lidl\" categorize transaction as 38 (Food & Dining / Groceries)",
+      "Catcode": "38",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Delhaize%' OR \"BeneficiaryName\" LIKE '%Lidl%'"
     },
+    {
+      "Title": "When BeneficiaryName contains \"A1 Telecom\" or \"Comcast\" categorize transaction as C (Bills & Utilities)",
+      "Catcode": "C",
+      "Predicate": "\"BeneficiaryName\" LIKE '%A1 Telecom%' OR \"BeneficiaryName\" LIKE '%Comcast%'"
+    },
+    {
+      "Title": "When BeneficiaryName contains \"Fit and Fun\" as 47 (Health & Fitness/ Gym )",
+      "Catcode": "47",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Fit and Fun%'"
+    },
+    {
+      "Title": "When BeneficiaryName contains \"Karate club\" as 50 (Health & Fitness/ Sports )",
+      "Catcode": "50",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Karate club%'"
+    },
+
+    {
+      "Title": "When BeneficiaryName contains \"Dental Plus\" as 44 (Health & Fitness/ Dentist )",
+      "Catcode": "44",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Dental Plus%'"
+    },
+    {
+      "Title": "When BeneficiaryName contains \"Medilife\"or \"Medigroup\" categorize transaction as 45 (Health & Fitness / Doctor)",
+      "Catcode": "45",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Medilife%' OR \"BeneficiaryName\" LIKE '%Medigroup%'"
+    },
+    {
+      "Title": "When BeneficiaryName contains \"T-Mobile\" as 11 (Bills & Utilities/ Mobile Phone )",
+      "Catcode": "11",
+      "Predicate": "\"BeneficiaryName\" LIKE '%T-Mobile%'"
+    },
+
+    {
+      "Title": "When BeneficiaryName contains \"Visa\" or \"MasterCard\" categorize transaction as F (Fees & Charges)",
+      "Catcode": "F",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Visa%' OR \"BeneficiaryName\" LIKE '%MasterCard%'"
+    },
+
+    {
+      "Title": "When BeneficiaryName contains \"Orange\" or \"Tele9\" categorize transaction as C (Bills & Utilities)",
+      "Catcode": "C",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Orange%' OR \"BeneficiaryName\" LIKE '%Tele9%'"
+    },
+
+    {
+      "Title": "When BeneficiaryName contains \"Swimming school\" as 50 (Health & Fitness/ Sports )",
+      "Catcode": "50",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Swimming school%'"
+    },
+
+    {
+      "Title": "When BeneficiaryName contains \"Netflix\" or \"Hulu\" categorize transaction as 21 (Entertainment / Movies & DVDs)",
+      "Catcode": "21",
+      "Predicate": "\"BeneficiaryName\" LIKE '%Netflix%' OR \"BeneficiaryName\" LIKE '%Hulu%'"
+    },
+
     {
       "Title": "When Mcc is 8299 (Caterers) categorize transaction as 17 (Education / Tuition)",
       "Catcode": "17",
-      "Predicate": "Mcc = '8299'"
+      "Predicate": "\"Mcc\" = 8299"
     },
     {
-      "Title": "When Mcc is 5499 (Caterers) categorize transaction as 38 (Food & Dining / Groceries)",
-      "Catcode": "38",
-      "Predicate": "Mcc = '5499'"
+      "Title": "When Mcc is 5995 (Caterers) categorize transaction as O (Pets)",
+      "Catcode": "O",
+      "Predicate": "\"Mcc\" = 5995"
     },
     {
-      "Title": "When Mcc is 7523 (Caterers) categorize transaction as 5 (Auto & Transport / Parking)",
-      "Catcode": "5",
-      "Predicate": "Mcc = '7523'"
+      "Title": "When Mcc is 7519 (Caterers) categorize transaction as 105 (Travel / Rental Car & Taxi)",
+      "Catcode": "105",
+      "Predicate": "\"Mcc\" = 7519"
+    },
+    {
+      "Title": "When Mcc is 5712 (Caterers) categorize transaction as 0 (Misc Expenses / Other)",
+      "Catcode": "0",
+      "Predicate": "\"Mcc\" = 5712"
+    },
+    {
+      "Title": "When Mcc is 5912 (Caterers) categorize transaction as 49 (Health & Fitness / Pharmacy)",
+      "Catcode": "49",
+      "Predicate": "\"Mcc\" = 5912"
+
+    },
+    {
+      "Title": "When Mcc is 5655 (Caterers) categorize transaction as 50 (Health & Fitness / Sports)",
+      "Catcode": "50",
+      "Predicate": "\"Mcc\" = 5655"
+
+    },
+    {
+      "Title": "When Kind is fee (Caterers) categorize transaction as 25 (Fees & Charges / ATM Fee)",
+      "Catcode": "25",
+      "Predicate": "\"Kind\" LIKE '%fee%'"
     },
     {
       "Title": "When Mcc is 5733 (Caterers) categorize transaction as 22 (Entertainment / Music)",
       "Catcode": "22",
-      "Predicate": "Mcc = '5733'"
+      "Predicate": "\"Mcc\" = 5733"
+
+    },
+    {
+      "Title": "When Mcc is 7523 (Caterers) categorize transaction as 5 (Auto & Transport / Parking)",
+      "Catcode": "5",
+      "Predicate": "\"Mcc\" = 7523"
+
+    },
+    {
+      "Title": "When Mcc is 5192 (Caterers) categorize transaction as 23 (Entertainment / Newspapers & Magazines)",
+      "Catcode": "23",
+      "Predicate": "\"Mcc\" = 5192"
+
     }
+
+
+
   ]
 }

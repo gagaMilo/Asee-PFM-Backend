@@ -41,7 +41,7 @@ namespace PersonalFinanceManagementAPI.Controllers
         {
             TransactionKind? transactionKind1 = traconvertStringTransactionKindToEnum(transactionKind);
             var transactions = await _transactionsService.GetListTransactions(transactionKind1, startDate, endDate, page, pageSize, sortBy, sortOrder);
-           return Ok(transactions);
+            return Ok(transactions);
         }
 
         private TransactionKind? traconvertStringTransactionKindToEnum(string? transactionKind)

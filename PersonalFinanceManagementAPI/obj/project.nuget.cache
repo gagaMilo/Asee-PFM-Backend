@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+jp1ErvvphN0dwUWMoca+nr1KG1Um20V+F8vFIJvXcJRhGoVhrE9v6sriB5iubocroh1QLrtRYjcasaNKWjU/w==",
+  "dgSpecHash": "A8al9wXtpzF+aKwrfaje9Q8nm0io0JfMIM8ec74S1fo9OtZyAgrV/Dwlx9EM8QXVAO27dgdDJ3la/Hz1Paw56A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fortu\\source\\repos\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj",
+  "projectFilePath": "C:\\Users\\fortu\\OneDrive\\Desktop\\Asee PFM Back_v2\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fortu\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\fortu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

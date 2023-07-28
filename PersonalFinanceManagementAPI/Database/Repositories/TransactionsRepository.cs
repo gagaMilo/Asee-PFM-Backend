@@ -297,7 +297,7 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
                         }
                         if (amount_sub != 0)
                         {
-                            spendinInCategory_sub = new SpendingInCategoryEntity(catcode, amount_sub, count_sub);
+                            spendinInCategory_sub = new SpendingInCategoryEntity(row, amount_sub, count_sub);
                             newListCatcode_category_and_sub.Add(spendinInCategory_sub);
                         }
 
@@ -315,6 +315,7 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
             {
                 
                 var newList = new List<SpendingInCategoryEntity>();
+                
                 query = _dbContext.Transactions.AsQueryable();
                 var spendings = await query.ToListAsync();
 
@@ -398,6 +399,7 @@ namespace PersonalFinanceManagementAPI.Database.Repositories
                         
                     }
                 }
+
                 result.Groups = newList;
             }
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fortu\\source\\repos\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj": {}
+    "C:\\Users\\fortu\\OneDrive\\Desktop\\Asee PFM Back_v2\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fortu\\source\\repos\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj": {
+    "C:\\Users\\fortu\\OneDrive\\Desktop\\Asee PFM Back_v2\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fortu\\source\\repos\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj",
+        "projectUniqueName": "C:\\Users\\fortu\\OneDrive\\Desktop\\Asee PFM Back_v2\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj",
         "projectName": "PersonalFinanceManagementAPI",
-        "projectPath": "C:\\Users\\fortu\\source\\repos\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj",
+        "projectPath": "C:\\Users\\fortu\\OneDrive\\Desktop\\Asee PFM Back_v2\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI.csproj",
         "packagesPath": "C:\\Users\\fortu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fortu\\source\\repos\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\obj\\",
+        "outputPath": "C:\\Users\\fortu\\OneDrive\\Desktop\\Asee PFM Back_v2\\PersonalFinanceManagementAPI\\PersonalFinanceManagementAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
